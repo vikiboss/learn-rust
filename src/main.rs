@@ -31,7 +31,6 @@ fn main() {
 
     let str = format!("a is {}", a);
     println!("{}", str);
-    
 
     {
         let a = "hello";
@@ -51,4 +50,28 @@ fn main() {
     // unreachable!("This code should never be reached");
 
     // todo!("Implement the rest of the program");
+
+    let res = collatz_length_refined(10);
+    println!("Collatz length of 10: {}", res);
+}
+
+#[allow(dead_code)]
+fn collatz_length(mut n: i32) -> i32 {
+    let mut len = 1;
+    loop {
+        if n == 1 {
+            break len;
+        }
+        n = if n % 2 == 0 { n / 2 } else { 3 * n + 1 };
+        len += 1;
+    }
+}
+
+fn collatz_length_refined(mut n: i64) -> u64 {
+    let mut len = 1u64;
+    while n != 1 {
+        n = if n % 2 == 0 { n / 2 } else { 3 * n + 1 };
+        len += 1;
+    }
+    len
 }
