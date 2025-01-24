@@ -1,3 +1,9 @@
+use crate::lib::transpose::transpose;
+
+mod lib {
+    pub mod transpose;
+}
+
 fn main() {
     let mut target = 1232345;
 
@@ -12,7 +18,7 @@ fn main() {
     }
 
     for e in [1, 2, 3] {
-        println!("e: {}", e);
+        println!("e: {e}");
     }
 
     let mut num = 0;
@@ -53,6 +59,42 @@ fn main() {
 
     let res = collatz_length_refined(10);
     println!("Collatz length of 10: {}", res);
+
+    let mut arr: [i32; 3] = [1, 2, 3];
+    // let [first, second, third] = arr;
+    arr[1] = 4;
+    println!("array {:?}", arr);
+
+    let t: (i32, f64, u8, bool) = (500, 6.4, 1, true);
+    let (x, y, z, mut active) = t;
+    active = active && false;
+    println!(
+        "Tuple: x: {}, y: {}, z: {}, active: {}, t.1: {}",
+        x, y, z, active, t.1
+    );
+
+    for a in arr {
+        for i in 0..a {
+            assert_ne!(i, 4);
+        }
+    }
+
+    let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+    fn print_matrix(matrix: [[i32; 3]; 3]) {
+        for row in matrix.iter() {
+            for &cell in row.iter() {
+                print!("{}, ", cell);
+            }
+            println!();
+        }
+    }
+
+    print_matrix(matrix);
+
+    let matrix = [[101, 102, 103], [201, 202, 203], [301, 302, 303]];
+    let transposed = transpose(matrix);
+    println!("transposed: {:?}", transposed);
 }
 
 #[allow(dead_code)]
@@ -74,4 +116,9 @@ fn collatz_length_refined(mut n: i64) -> u64 {
         len += 1;
     }
     len
+}
+
+#[test]
+fn test_collatz_length() {
+    assert_eq!(collatz_length_refined(11), 15);
 }
