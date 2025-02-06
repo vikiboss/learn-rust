@@ -4,7 +4,40 @@ mod lib {
     pub mod transpose;
 }
 
+#[allow(unreachable_code)]
 fn main() {
+
+    println!("Hello, world!");
+
+    println!("Hello, world! {}", 1);
+
+    println!("Hello, world! {}/{}", 1, "2");
+
+    println!("Hello, world! {0}", 1);
+
+    println!("Hello, world! {1}/{0}", 1, "2");
+
+    println!("Hello, world! {name}", name = "123");
+
+    println!("Hello, world! {:x}/{:b}/{:o}", 12, 12, 11);
+
+    println!("Hello, world! {:?}", [12, 12, 11]);
+
+    let c = "123";
+    println!("Hello, world! {c}");
+
+    // This is a line comment
+    /* This is a block comment */
+
+    let mut k = 9;
+    let l = k;
+
+    k += l;
+
+    println!("k += 1, k={k}, l={l}");
+
+    return;
+
     let mut target = 1232345;
 
     while target > 17 {
