@@ -4,8 +4,62 @@ mod lib {
     pub mod transpose;
 }
 
+#[derive(Debug)]
+struct Complex {
+    real: f64,
+    imag: f64,
+}
+
+impl std::fmt::Display for Complex {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{} + {}i", self.real, self.imag)
+    }
+}
+
+#[derive(Debug)]
+struct List(Vec<i32>);
+
+impl std::fmt::Display for List {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        let List(ref vec) = *self;
+
+        write!(f, "[")?;
+
+        for (count, v) in vec.iter().enumerate() {
+            if count != 0 {
+                write!(f, ", ")?;
+            }
+            write!(f, "{}: {}", count, v)?;
+        }
+
+        write!(f, "]")
+    }
+}
+
 #[allow(unreachable_code)]
 fn main() {
+    let c = Complex {
+        real: 3.3,
+        imag: 7.2,
+    };
+
+    println!("Display: {}", c);
+    println!("Debug: {:?}", c);
+
+    let list = List(vec![1, 2, 3]);
+
+    println!("Display: {}", list);
+
+    println!("Hello {:5}!", "x");
+    println!("Hello {:1$}!", "x", 5);
+    println!("Hello {1:0$}!", 5, "x");
+    println!("Hello {:width$}!", "x", width = 5);
+
+    let width = 5;
+
+    println!("Hello {:width$}!", "x");
+
+    println!("Hello {:^15}!", format!("{:?}", Some("hi")));
 
     println!("Hello, world!");
 
