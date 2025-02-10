@@ -58,23 +58,14 @@ fn main() {
     let width = 5;
 
     println!("Hello {:width$}!", "x");
-
     println!("Hello {:^15}!", format!("{:?}", Some("hi")));
-
     println!("Hello, world!");
-
     println!("Hello, world! {}", 1);
-
     println!("Hello, world! {}/{}", 1, "2");
-
     println!("Hello, world! {0}", 1);
-
     println!("Hello, world! {1}/{0}", 1, "2");
-
     println!("Hello, world! {name}", name = "123");
-
     println!("Hello, world! {:x}/{:b}/{:o}", 12, 12, 11);
-
     println!("Hello, world! {:?}", [12, 12, 11]);
 
     let c = "123";
