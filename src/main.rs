@@ -36,8 +36,78 @@ impl std::fmt::Display for List {
     }
 }
 
+fn say_hello() {
+    let chinese = "你好";
+    let english = "Hello";
+    let french = "Bonjour";
+    let german = "Hallo";
+    let italian = "Ciao";
+    let japanese = "こんにちは";
+    let korean = "안녕하세요";
+
+    let regions = [
+        "China", "USA", "France", "Germany", "Italy", "Japan", "Korea",
+    ];
+
+    for region in regions {
+        let greeting = match region {
+            "China" => chinese,
+            "USA" => english,
+            "France" => french,
+            "Germany" => german,
+            "Italy" => italian,
+            "Japan" => japanese,
+            "Korea" => korean,
+            _ => "Hello",
+        };
+
+        println!("{} => {}", region, greeting);
+    }
+}
+
 #[allow(unreachable_code)]
 fn main() {
+    say_hello();
+
+    let str = "
+    Key,Value
+    Name,Viki
+    Age,23
+    Height,166
+    Weight,48
+";
+
+    let lines = str.lines();
+
+    println!();
+
+    for line in lines {
+        if line.trim().is_empty() {
+            continue;
+        };
+
+        let parts: Vec<&str> = line.split(',').collect();
+        let key = parts[0].trim();
+        let value = parts[1].trim();
+
+        match key {
+            "name" => println!("Name: {}", value),
+            _ => println!("> ..."),
+        }
+
+        if cfg!(debug_assertions) {
+            eprintln!("Debug: {:?} => {:?}", line, parts);
+        }
+
+        if let Ok(number) = value.parse::<i32>() {
+            println!("{} => {}", key, number);
+        }
+
+        println!("- {} => {}", key, value);
+    }
+
+    println!();
+
     let c = Complex {
         real: 3.3,
         imag: 7.2,
