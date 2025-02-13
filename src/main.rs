@@ -1,3 +1,5 @@
+use std::ops::Add;
+
 use crate::lib::transpose::transpose;
 
 mod lib {
@@ -44,6 +46,28 @@ fn say_hello() {
     let italian = "Ciao";
     let japanese = "こんにちは";
     let korean = "안녕하세요";
+
+    let _n = "42".parse::<i32>().expect("Not a number!");
+
+    let a = 1;
+    let _b = a.add(10);
+
+    let c = 2;
+    let c = c * c;
+
+    println!("{c}");
+
+    for i in 'a'..='z' {
+        print!("{}", i);
+    }
+
+    println!();
+
+    for i in 1..11 {
+        print!("{}", i);
+    }
+
+    println!();
 
     let regions = [
         "China", "USA", "France", "Germany", "Italy", "Japan", "Korea",
